@@ -1,0 +1,3 @@
+catalog:maven centre
+filter:apache.maven.archetypes(quick_start)
+for web select web

@@ -1,0 +1,26 @@
+# Step 1: Start Minikube
+minikube start
+
+# Step 2: Check Minikube Status
+minikube status
+kubectl delete deployment mynginx
+# Step 3: Create NGINX Deployment
+kubectl create deployment nginx --image=nginx
+
+# Step 4: Expose NGINX Deployment as a Service
+kubectl expose deployment nginx --type=NodePort --port=80
+
+# Step 5: Check Deployment and Pod Details
+//kubectl get deployments
+kubectl get pods
+//we need to get mynginx container
+kubectl scale deployment mynginx --replicas=4
+kubectl port-forward  svc/mynginx 8081:80
+kubectl describe pods
+kubectl port-forward  svc/mynginx 8081:80
+# Step 6: Check NGINX Service Details
+kubectl get services
+kubectl describe service nginxc
+
+# Step 7: Open NGINX in Browser
+minikube service nginx

@@ -1,0 +1,54 @@
+//htmlproject
+STEP 1 — Connect to EC2
+ssh -i examkey.pem ubuntu@<your-ec2-public-ip>
+STEP 2 — Install Needed Software
+sudo apt update
+sudo apt install docker.io -y
+sudo apt install git -y
+sudo apt install nano -y
+STEP 3 — Clone Your GitHub Repository
+git clone https://github.com/OlladapuShruthi/AWS
+cd AWS
+STEP 4 — Create Dockerfile
+nano Dockerfile
+FROM nginx:latest
+COPY index.html /usr/share/nginx/html/
+CTRL + O → ENTER → CTRL + X
+STEP 5 — Build Docker Image
+sudo docker build -t simple-web .
+sudo docker images
+STEP 6 — Run Docker Container
+sudo docker run -d --name web-demo -p 80:80 simple-web
+STEP 7 — Test Website
+http://<your-ec2-public-ip>
+
+//maven
+STEP 1 — Connect to EC2
+ssh -i examkey.pem ubuntu@<your-ec2-public-ip>
+STEP 2 — Install Software (Docker, Git, Maven)
+sudo apt update
+sudo apt install docker.io -y
+sudo apt install git -y
+sudo apt install maven -y
+STEP 3 — Give Docker Permission
+sudo usermod -aG docker $USER
+newgrp docker
+docker ps
+STEP 4 — Clone Project From GitHub
+git clone https://github.com/vyshnavi/maven-java.git
+cd maven-java
+STEP 5 — Build the Maven Project
+mvn clean package
+ls target
+STEP 6 — Create Dockerfile
+nano Dockerfile
+FROM tomcat:9
+COPY target/*.war /usr/local/tomcat/webapps/
+CTRL + O → ENTER → CTRL + X
+STEP 7 — Build Docker Image
+docker build -t myapp .
+docker images
+STEP 8 — Run Docker Container
+docker run -d --name app-demo -p 6060:8080 myapp
+STEP 9 — Test Application
+http://<public-ip>:6060

@@ -1,0 +1,34 @@
+docker --version
+docker pull ubuntu:latest
+docker run -it -p 9090:80 --name myubuntu1 ubuntu:latest
+#apt update
+#ls
+#cd usr
+#ls
+#cd share
+#ls
+#cd ngnix
+#ls
+#cd html
+#ls
+#apt install nano
+nano index.html
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Custom Nginx Page</title>
+    <style>
+        html { color-scheme: light dark; }
+        body { width: 35em; margin: 0 auto;
+               font-family: Tahoma, Verdana, Arial, sans-serif; }
+    </style>
+</head>
+<body>
+    <h1>This is my page!</h1>
+    <p>If you see this message, nginx is running successfully inside Docker.</p>
+
+    <p><em>Thank you for viewing my page.</em></p>
+</body>
+</html>

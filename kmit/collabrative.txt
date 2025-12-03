@@ -1,0 +1,98 @@
+# ==============================================
+# EXPERIMENT 3 – COLLABORATIVE CODING WITH GIT
+# Forking, Cloning, PRs, Conflicts, Patch Files
+# ==============================================
+
+# STEP 1: Fork the repository on GitHub (UI Step)
+# → Go to original repo → Click "Fork" → Create fork under your account
+
+# STEP 2: Clone the forked repository into your local system
+git clone https://github.com/karunya-0/forkedrepo.git
+# Downloads entire repository into local folder
+
+# STEP 3: Move inside the project directory
+cd forkedrepo
+
+# STEP 4: Check the current branch
+git branch
+# Usually 'main' or 'master'
+
+# STEP 5: Create a new feature branch
+git checkout -b feature-update
+# Creates and switches to new development branch
+
+# STEP 6: Make changes to any file (example: updating README.md)
+# After editing, add changes:
+git add README.md          # Stages modified file
+
+# STEP 7: Commit your changes
+git commit -m "Updated README with new details"
+# Stores the change as a commit
+
+# STEP 8: Push the feature branch to your remote fork
+git push origin feature-update
+# Makes branch available on GitHub for pull request
+
+# STEP 9: Create Pull Request (UI Step)
+# Go to GitHub → Your repo → "Compare & Pull Request"
+# Write description → Submit PR
+
+# STEP 10: Simulate a conflict
+# (Make change in same file/line in both main & feature branch)
+
+# Example:
+# MAIN BRANCH LINE:   title = "Project Version 1"
+# FEATURE BRANCH:     title = "Updated Project Title"
+
+# STEP 11: Pull latest changes from remote main branch
+git checkout main          # Switch to main branch
+git pull origin main       # Get latest main updates
+
+# STEP 12: Switch to feature branch for merging
+git checkout feature-update
+
+# STEP 13: Try merging main → feature branch to generate conflict
+git merge main
+
+# If conflict occurs, Git shows:
+# CONFLICT (content): Merge conflict in README.md
+
+# STEP 14: Open conflicted file to resolve manually
+# Lines appear like:
+# <<<<<<< HEAD
+# (your change)
+# =======
+# (main branch change)
+# >>>>>>> main
+
+# Edit → Keep correct version → Save file
+
+# STEP 15: Mark conflict resolved
+git add README.md
+
+# STEP 16: Commit after resolving conflict
+git commit -m "Resolved merge conflict in README.md"
+
+# STEP 17: Push resolved branch again
+git push origin feature-update
+# PR automatically updates
+
+# STEP 18: Create a patch file for your changes
+git format-patch -1 HEAD
+# Creates patch file like: 0001-Resolved-merge-conflict.patch
+
+# OR create patch for multiple commits:
+git format-patch origin/main --stdout > update.patch
+# Sends all commits since main into one patch file
+
+# STEP 19: Apply a patch (on another system or project)
+# Copy patch and run:
+git apply update.patch
+# Applies changes from patch into working directory
+
+# STEP 20: Final PR merging (UI Step)
+# Reviewer merges PR into original repository
+
+# ============================
+# END OF EXPERIMENT 3
+# ============================

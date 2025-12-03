@@ -1,0 +1,86 @@
+# ============================
+# EXPERIMENT 2 – GIT COMMANDS
+# LOCAL + REMOTE OPERATIONS
+# ============================
+
+# STEP 1: Initialize a new Git repository in the current folder
+git init                   # Creates a hidden .git folder → now this folder becomes a Git project
+
+# STEP 2: Check the current git status
+git status                 # Shows untracked, modified and staged files
+
+# STEP 3: Configure username and email (Global – required for commit identity)
+git config --global user.name "Karunya"         # Sets your GitHub username
+git config --global user.email "example@gmail.com"  # Sets your GitHub email
+
+# STEP 4: Add all files into staging area
+git add .                  # Stages all files for committing
+
+# STEP 5: Commit the staged files with a message
+git commit -m "Initial commit"    # Creates first commit
+
+# STEP 6: Rename current branch to main (if needed)
+git branch -M main         # Ensures your branch is 'main' for GitHub pushes
+
+# STEP 7: Add remote GitHub repository URL
+git remote add origin https://github.com/karunya-0/examrepo.git  
+# 'origin' = name of remote repository
+# URL = location of GitHub repo
+
+# STEP 8: Verify remote URL
+git remote -v              # Shows fetch & push URLs
+
+# STEP 9: Push local main branch to GitHub (first push)
+git push -u origin main    # Uploads code to GitHub & sets default upstream
+
+# STEP 10: Create a new feature branch
+git branch feature-login   # Creates a new branch called feature-login
+
+# STEP 11: Switch to the new branch
+git checkout feature-login # Moves your working directory to that branch
+
+# STEP 12: Make changes and add them (example file index.html)
+git add index.html         # Stages the changed file
+
+# STEP 13: Commit the changes in feature branch
+git commit -m "Added login page"  # Saves changes to the branch
+
+# STEP 14: Push feature branch to remote
+git push origin feature-login   # Uploads new branch to GitHub
+
+# STEP 15: Fetch updates from remote repository
+git fetch origin            # Downloads remote changes without merging them
+
+# STEP 16: View all local and remote branches
+git branch -a               # Shows local + remote branches
+
+# STEP 17: Merge feature branch → main branch
+git checkout main           # Switch back to main branch
+git merge feature-login     # Combines feature-login branch into main
+
+# STEP 18: Push merged changes back to GitHub
+git push origin main        # Uploads merge result to GitHub
+
+# STEP 19: Stash temporary changes (if not ready to commit)
+git stash                   # Saves uncommitted changes temporarily
+
+# STEP 20: Apply stashed changes back
+git stash pop               # Restores last saved stash and removes it
+
+# STEP 21: Restore a file to last commit (undo changes)
+git restore filename.txt    # Discards local modifications in a file
+
+# STEP 22: Undo staged files (remove from staging)
+git restore --staged filename.txt   # Removes file from staging area
+
+# STEP 23: View commit history in short form
+git log --oneline           # Shows commit ID + message in one line
+
+# STEP 24: Remove a sensitive file from Git history (concept only)
+# (BFG or filter-branch can be used; mention only for viva)
+# Example conceptual command:
+# git filter-branch --tree-filter 'rm -f secret.txt' HEAD
+
+# ============================
+# END OF EXPERIMENT 2 COMMANDS
+# ============================
